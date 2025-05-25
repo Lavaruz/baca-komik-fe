@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { getComicById, GetComicChapterById} from "../../lib/comic"
 import { ChapterInterface, ChaptersInterface, ComicsDataInterface } from "@/app/lib/interface";
 import { formatTanggalRelative, isRecentUpload } from "../../lib/utils";
+import DisqusLibrary from "@/components/layout/DisqusComment";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -29,7 +30,17 @@ export default async function ComicDetail({params}: Props) {
   
   // notFound()
   return (
-    <div className="grid md:grid-cols-8 container gap-6">
+  <div className="container">
+    <div className="md:h-18 mb-6 flex flex-col md:flex-row gap-2">
+      <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+        <p>ads_komik_1</p>
+      </div>
+      <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+        <p>ads_komik_2</p>
+      </div>
+    </div>
+
+    <div className="grid md:grid-cols-8 gap-6">
       <div className="md:col-span-6 px-[5%] md:px-0">
         <div className="pb-8 grid md:grid-cols-10 gap-6">
           <div className="md:col-span-3">
@@ -48,7 +59,7 @@ export default async function ComicDetail({params}: Props) {
 
 
           <div className="md:col-span-7">
-            <h1 className="font-bold text-2xl">{COMIC.title}</h1>
+            <h1 className="font-bold text-foreground/80 text-xl md:text-2xl">{COMIC.title}</h1>
             <p className="mt-4 text-foreground text-sm md:text-base">{COMIC.synopsis}</p>
 
             <div className="grid gap-x-6 gap-y-4 grid-cols-1 text-sm mt-4">
@@ -110,25 +121,55 @@ export default async function ComicDetail({params}: Props) {
           </div>
         </div>
 
+        <div className="h-18 my-6">
+          <div className="bg-second w-full h-full flex items-center justify-center text-sm text-foreground/80">
+            <p>ads_komik_chapters</p>
+          </div>
+        </div>
+
         <div className="mt-8">
           <h1 className="text-xl mb-4 px-1 font-bold">Kamu Mungkin Suka</h1>
           <div className="grid grid-cols-2 md:grid-cols-4">
             {/* <Card title="" isNew={true} src="/img/Cover.webp"></Card> */}
-            <Card id="judul" title="MILF Hunting In Another World" isNew={true} src="/img/Cover2.webp"></Card>
+            {/* <Card id="judul" title="MILF Hunting In Another World" isNew={true} src="/img/Cover2.webp"></Card>
             <Card id="judul" title="Secret Class" isNew={true} src="/img/Cover3.webp"></Card>
             <Card id="judul" title="Corruption in The Dungeon" isNew={false} src="/img/Cover4.webp"></Card>
-            <Card id="judul" title="The Hole Diary" isNew={false} src="/img/Cover5.webp"></Card>
+            <Card id="judul" title="The Hole Diary" isNew={false} src="/img/Cover5.webp"></Card> */}
           </div>
         </div>
+
+        <div className="max-w-4xl mx-auto px-4 mt-12">
+          <DisqusLibrary url={`https://1s3qndx9-3000.asse.devtunnels.ms/${ID}`} title={COMIC.title} />
+        </div>
+
       </div>
       <div className="md:col-span-2 px-[5%] md:px-0">
-        <div className="bg-second p-5 rounded-xl flex flex-col gap-3">
-          <p className="text-lg font-bold mb-3">Follow Socials</p>
-          <button className="w-full py-2 bg-main text-white font-medium rounded">Join Discord Kita</button>
-          {/* <button className="w-full py-2 bg-main text-white font-medium rounded">Join Discord Kita</button> */}
-          <button className="w-full py-2 bg-blue-500 text-white font-medium rounded">Facebook Gentai</button>
+        <div className="sticky top-[2rem]">
+          <div className="bg-second p-5 rounded-xl flex flex-col gap-3">
+            <p className="text-lg font-bold mb-3">Gentai Socials</p>
+            <button className="w-full py-2 bg-main text-white font-medium rounded">Join Discord Kita</button>
+            {/* <button className="w-full py-2 bg-main text-white font-medium rounded">Join Discord Kita</button> */}
+            <button className="w-full py-2 bg-blue-500 text-white font-medium rounded">Follow Facebook</button>
+          </div>
+
+          <div className="flex flex-col gap-2 mt-6">
+            <div className="bg-second h-14 w-full flex items-center justify-center text-sm text-foreground/80">
+              <p>ads_komik_3</p>
+            </div>
+            <div className="bg-second h-14 w-full flex items-center justify-center text-sm text-foreground/80">
+              <p>ads_komik_4</p>
+            </div>
+            <div className="bg-second h-14 w-full flex items-center justify-center text-sm text-foreground/80">
+              <p>ads_komik_5</p>
+            </div>
+            <div className="bg-second h-14 w-full flex items-center justify-center text-sm text-foreground/80">
+              <p>ads_komik_6</p>
+            </div>
+          </div>
         </div>
+
       </div>
+    </div>
   </div>
   )
 }

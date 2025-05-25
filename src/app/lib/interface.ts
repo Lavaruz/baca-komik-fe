@@ -3,6 +3,11 @@ export interface ComicsInterface {
     pagination: ComicsPaginationInterface
 }
 
+export interface ComicsRandomInterface {
+    data: ComicsDataInterface[]
+    count: number
+}
+
 export interface ChaptersInterface {
     data: ChapterInterface[]
     pagination: ComicsPaginationInterface
@@ -50,6 +55,7 @@ export interface GenreInterface {
   createdAt: string
   updatedAt: string
   ComicGenres: ComicGenres
+  comicCount?:number
 }
 
 export interface ComicGenres {
@@ -68,6 +74,7 @@ export interface AuthorInterface {
   createdAt: string
   updatedAt: string
   ComicAuthors: ComicAuthors
+  comicCount?:number
 }
 
 export interface ComicAuthors {

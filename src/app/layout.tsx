@@ -23,9 +23,9 @@ export default function RootLayout({
 
   const hideNavbarOn = ["/chapters"]; // sesuaikan sesuai routing kamu
 
-  const shouldHideNavbar = hideNavbarOn.some(path => {
+  const shouldHideNavbar = hideNavbarOn.some(path => 
     pathname?.startsWith(path.replace("[slug]", ""))
-  });
+  );
 
   return (
     <html lang="en" className={`${poppins.variable}`}>

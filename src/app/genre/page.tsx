@@ -1,9 +1,8 @@
-import Card from "@/components/ui/Card/page"
-import Search from "@/components/ui/Search/page"
-import Genre from "@/components/ui/Genre/page"
-import TypeComic from "@/components/ui/Type/page";
+import { getAllGenres } from "../lib/comic";
+import { GenreInterface } from "../lib/interface";
+import Link from "next/link";
 
-export default function Page(){
+export default async function Page(){
   const hentaiGenres = [
     { genre: "Vanilla", description: "Cerita romantis yang manis dan konsensual, sering menggambarkan hubungan pacaran yang sehat." },
     { genre: "NTR (Netorare)", description: "Cerita tentang pasangan yang direbut atau diselingkuhi, biasanya menyakitkan secara emosional." },
@@ -60,30 +59,67 @@ export default function Page(){
     { genre: "Creampie", description: "Ejakulasi dalam" },
     { genre: "Bukkake", description: "Ejakulasi ramai-ramai" }
   ];
+
+  const GENRES = await getAllGenres()
   
   return (
     <div className="container pb-20">
+
+      <div className="md:h-18 mb-6 flex flex-col md:flex-row gap-2">
+        <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+          <p>ads_genre_1</p>
+        </div>
+        <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+          <p>ads_genre_2</p>
+        </div>
+      </div>
+
+
+      <div className="mb-10">
+        <div className="mb-4 px-2">
+          <h1 className="text-2xl font-light">Genre</h1>
+          <p className="mt-1 text-foreground/60 text-sm">Cari preferensi kamu disini</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-3 text-sm">
+          {GENRES.data.map((genre: GenreInterface) => (
+            <Link href={`/genre/${encodeURIComponent(genre.name)}`} className="bg-second/70 hover:bg-second rounded-md py-2 px-4 flex items-center justify-between">
+              <p className="truncate">{genre.name}</p>
+              <p className="bg-main flex items-center justify-center w-10 h-6 min-w-10 min-h-6 rounded-md text-xs">{genre.comicCount}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="md:h-18 mb-6 flex flex-col md:flex-row gap-2">
+        <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+          <p>ads_genre_3</p>
+        </div>
+        <div className="bg-second w-full h-16 md:h-full flex items-center justify-center text-sm text-foreground/80">
+          <p>ads_genre_4</p>
+        </div>
+      </div>
       
       {/* <Search></Search> */}
 
-      <div className="">
-        {/* <h1 className="text-4xl font-black text-black/70">TIPE <br />KOMIK</h1> */}
+      {/* <div className="">
+        <h1 className="text-4xl font-black text-black/70">TIPE <br />KOMIK</h1>
         <div className="grid grid-cols-4">
           <TypeComic title="DOUJIN" description="Komik dari Author" imgUrl="h1.jpg"></TypeComic>
           <TypeComic title="MANHWA" description="Komik dari Korea" imgUrl="h2.webp"></TypeComic>
           <TypeComic title="MANGA" description="Komik dari Jepang" imgUrl="h3.jpg"></TypeComic>
           <TypeComic title="MANGA" description="Komik dari Jepang" imgUrl="Cover3.webp"></TypeComic>
         </div>
-      </div>
+      </div> */}
 
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <h1 className="text-4xl font-black text-black/70">KATEGORI<br />GENRE</h1>
         <div className="grid grid-cols-4 gap-3 mt-6">
           {hentaiGenresTwo.map(genre => (
             <Genre genre={genre.genre} description={genre.description} counter={366} imageUrl=""></Genre>
           ))}
         </div>
-      </div>
+      </div> */}
 
     </div>
   )

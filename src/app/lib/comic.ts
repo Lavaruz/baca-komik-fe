@@ -1,7 +1,7 @@
 import { ComicsInterface, ComicsRandomInterface, GenreInterface } from "./interface"
 
-// const ROOT_URL = "http://localhost:8091"
-const ROOT_URL = "https://1s3qndx9-8091.asse.devtunnels.ms"
+const ROOT_URL = "http://localhost:8091"
+// const ROOT_URL = "https://1s3qndx9-8091.asse.devtunnels.ms"
 
 interface GetAllComicsConfig {
   limit?: number;

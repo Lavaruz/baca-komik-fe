@@ -90,7 +90,7 @@ export default async function ComicDetail({params}: Props) {
                   <span className="font-medium text-base lg:text-lg">Genre</span>
                   <div className="flex flex-wrap gap-2">
                     {COMIC.genres.map((genre) => (
-                      <Link href={`/explore?genre=${genre.name.trim()}`} key={genre.id} className="bg-second text-xs font-medium px-4 py-2 rounded-lg w-max hover:bg-main duration-300" >
+                      <Link href={`/genre/${genre.name.trim()}`} key={genre.id} className="bg-second text-xs font-medium px-4 py-2 rounded-lg w-max hover:bg-main duration-300" >
                         {genre.name}
                       </Link>
                     ))}
